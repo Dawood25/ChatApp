@@ -9,15 +9,12 @@
 <body>
     <marquee><h1>Welcome to chat Page App</h1></marquee>
     <script src="/socket.io/socket.io.js"> </script>
-    <script>
-        var socket =io();
-        socket.on('connect',()=>{
-            console.log("connected to the browser");
-        });
+    <script src="/js/index.js">    </script>
+    <form action="/action_page.php">
+        <input type="checkbox" name="vehicle" value="Bike"> I have a bike<br>
+        <input type="checkbox" name="vehicle" value="Car" checked> I have a car<br>
+        <input type="submit" value="Submit">
+      </form>
 
-        socket.on('disconnect',()=>{
-            console.log("disconnected from server");
-        })
-    </script>
 </body>
 </html>
