@@ -11,16 +11,18 @@ let io=socketIO(server);
 app.use(express.static(publicPath));
 io.on('connection',(socket)=>{
 console.log("new user connected");
-socket.emit('newMessage',{
-    to:"shauna morkel",
-    text:"hello shauna where to meet",
-    createdAt:new Date()
-});
+
 socket.on('disconnect',()=>{
     console.log("disconnected from the client");
 })
 socket.on("createMessage",(createmsg)=>{
     console.log("you have to create the msg",createmsg);
+    io.emit('newMessage',{
+        from:createmsg.from,
+        text:createmsg.text,
+        createdAt:new Date()
+    });
+    console.log("message created and send");
 })
 });
 
