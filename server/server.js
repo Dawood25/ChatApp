@@ -20,7 +20,7 @@ socket.on('disconnect',()=>{
     console.log("disconnected from the client");
 })
 socket.on("createMessage",(createmsg)=>{
-    console.log("you have to create the msg"+createmsg);
+    console.log("you have to create the msg",createmsg);
 })
 });
 

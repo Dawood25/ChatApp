@@ -1,7 +1,7 @@
 var socket =io();
 socket.on('connect',function (){
     console.log("connected to the browser");
-    socket.emit("createmessage",{
+    socket.emit("createMessage",{
         to:"jen shaw",
         text:"hello jen how are you"
     })
@@ -12,5 +12,5 @@ socket.on('disconnect',function(){
 });
 
 socket.on("newMessage",function(newmsg){
-    console.log("message from the server is" +newmsg);
+    console.log("message from the server is",newmsg);
 });
