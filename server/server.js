@@ -28,13 +28,14 @@ console.log("new user connected");
 socket.on('disconnect',()=>{
     console.log("disconnected from the client");
 })
-socket.on("createMessage",(createmsg)=>{
+socket.on("createMessage",(createmsg,callback)=>{
     console.log("you have to create the msg",createmsg);
     io.emit('newMessage',{
         from:createmsg.from,
         text:createmsg.text,
         createdAt:new Date()
     });
+    callback('this is from the server');
     console.log("message created and send");
 })
 });

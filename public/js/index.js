@@ -1,13 +1,29 @@
 var socket =io();
-socket.on('connect',function (){
-    console.log("connected to the browser");
-    
-});
 
 socket.on('disconnect',function(){
     console.log("disconnected from server");
 });
 
 socket.on("newMessage",function(newmsg){
-    console.log("message from the server is",newmsg);
+    let li =jQuery('<li></li>')
+    li.text(`from ${newmsg.from} text ${newmsg.text}`)
+    console.log("mes from the server is",newmsg);
+    jQuery("#messages").append(li);
+});
+
+socket.emit("createMessage",{
+    from:"Jen",
+    text:"Demo to run acknowledgement"
+},function(data){
+    console.log("GOT IT"+data);
+});
+
+jQuery('#message-form').on('submit',function(e){
+e.preventDefault();
+socket.emit('createMessage',{
+    from:"User",
+    text:jQuery('[name=message]').val()
+},function(){
+
+})
 });
